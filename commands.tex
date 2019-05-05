@@ -1,0 +1,36 @@
+
+
+\NewDocumentCommand{\qb}{}{%
+    q.b.
+}
+
+\makeatletter
+
+\NewDocumentCommand{\setRecipePersonNumber}{m}{%
+    \DeclareDocumentCommand{\setRecipePersonNumber@value}{}{#1}%
+}
+
+\NewDocumentCommand{\generalRecipeInfos}{}{%
+    La ricetta è per \setRecipePersonNumber@value{} persone ed è realizzabile in X ore.%
+}
+
+\newcommand{\ingredienti@rec}{\@ifnextchar\bgroup{\ingredienti@consume}{\ingredienti@end}}
+
+\newcommand{\ingredienti@consume}[2]{%
+    {#1} & {#2} \\%
+    \ingredienti@rec%
+}
+
+\newcommand{\ingredienti@end}{%
+        \end{tabular}%
+    \end{table}%
+}
+
+\newcommand{\ingredienti}[2]{%
+    \begin{table}[h]%
+        \begin{tabular}{cl}%
+            Ingrediente & Quantità \\ \hline
+            \ingredienti@consume{#1}{#2}
+}
+
+\makeatother

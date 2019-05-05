@@ -1,0 +1,8 @@
+# latex
+
+build/
+
+*.pdf
+*.aux
+*.log
+*.synctex

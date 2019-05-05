@@ -1,0 +1,33 @@
+\documentclass{article}
+
+\usepackage{subcaption}
+\usepackage{xparse}
+\usepackage{etoolbox}
+\usepackage[italian]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{commons}
+
+\input{commands}
+
+\author{Massimo Bono}
+\title{Ricettario}
+\date{\today}
+
+\NewDocumentCommand{\sectionbreak}{}{%
+    \clearpage%
+}
+
+\begin{document}
+    \maketitle
+    \newpage
+
+    \tableofcontents
+    \newpage
+
+    \input{src/texs/introduzione}
+    \input{src/texs/brasato}
+    \input{src/texs/polenta}
+    \input{src/texs/pasta-al-tonno-rossa}
+\end{document}

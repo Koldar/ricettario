@@ -1,0 +1,55 @@
+%input
+% - first part of command name
+% - second part fo command name
+% - number of inputs
+% e.g., \generateCommand{Name}{abc}{1}{**#1**} generates \Nameabc[1]{**#1**}
+\NewDocumentCommand{\generateCommand}{m m m}{%
+  \expandafter\newcommand\csname #1#2\endcsname[#3]%
+}
+
+\NewDocumentCommand{\generateDef}{m m}{%
+    \expandafter\def\csname #1 \endcsname{#2}%
+}
+
+\NewDocumentCommand{\generateToken}{m}{%
+    \csname #1 \endcsname%
+}
+
+%input
+% - nameof the macro which will reference the file
+% - filename of file
+%
+% example:
+% \declareAuxFile{tempFile}{test.aux}
+% \begin{document}
+%  \openAuxFile{tempFile}
+%  \writeLine{tempFile}{hello world}
+%  \closeAuxFile{tempFile}
+% \end{document}
+\NewDocumentCommand{\declareAuxFile}{m m}{%
+    \newwrite\generateToken{#1}%
+    \generateDef{#1@filename}{#2}%
+}
+
+% - macrov referencing the file you want to open
+\NewDocumentCommand{\openAuxFile}{m}{%
+    \immediate\openout\generateToken{#1}=\generateToken{#1@filename}%
+}
+
+\NewDocumentCommand{\closeAuxFile}{m}{%
+    \immediate\closeout\generateToken{#1}%
+}
+
+% write something in the file
+% - macro referecing the file you want to write ionto
+\NewDocumentCommand{\writeLine}{m m}{%
+    \immediate\write\generateToken{#1}{#2}%
+}
+
+\NewDocumentCommand{\insertImage}{m m}{%
+    \begin{figure}[h]%
+        \centering%
+        \includegraphics[width=#2\textwidth]{#1}%
+        \label{#1}%
+    \end{figure}%
+}
