@@ -6,6 +6,22 @@
 
 \makeatletter
 
+\NewDocumentCommand{\warning}{m}{%
+\begin{bclogo}[logo=\bcattention, couleurBarre=orange, noborder=true, couleur=white]{Attenzione!}
+    {#1}
+\end{bclogo}
+}
+
+\NewDocumentCommand{\note}{m}{%
+\begin{bclogo}[logo=\bcinfo, couleurBarre=cyan, noborder=true, couleur=white]{Nota}
+    {#1}
+\end{bclogo}
+}
+
+\NewDocumentCommand{\quotes}{m}{%
+    ´´{#1}''%
+}
+
 \NewDocumentCommand{\setRecipePersonNumber}{m}{%
     \DeclareDocumentCommand{\setRecipePersonNumber@value}{}{#1}%
 }
@@ -28,6 +44,7 @@
 
 \newcommand{\ingredienti}[2]{%
     \begin{table}[h]%
+        \centering
         \begin{tabular}{cl}%
             Ingrediente & Quantità \\ \hline
             \ingredienti@consume{#1}{#2}

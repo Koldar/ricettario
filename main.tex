@@ -8,11 +8,13 @@
 \usepackage{graphicx}
 \usepackage{titlesec}
 \usepackage{commons}
+\usepackage[svgnames]{xcolor}
+\usepackage[tikz]{bclogo}
 
 \input{commands}
 
 \author{Massimo Bono}
-\title{Ricettario}
+\title{Il Ricettario\\Ricette gustose per palati Bresciani}
 \date{\today}
 
 \NewDocumentCommand{\sectionbreak}{}{%
@@ -21,13 +23,17 @@
 
 \begin{document}
     \maketitle
+    \clearpage
     \newpage
 
     \tableofcontents
+    \clearpage
     \newpage
 
     \input{src/texs/introduzione}
     \input{src/texs/brasato}
     \input{src/texs/polenta}
     \input{src/texs/pasta-al-tonno-rossa}
+    \input{src/texs/pomodori-ripieni}
+    \input{src/texs/crostini-con-pate-olive}
 \end{document}
