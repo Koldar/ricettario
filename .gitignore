@@ -6,3 +6,4 @@ build/
 *.aux
 *.log
 *.synctex
+*.toc
