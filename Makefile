@@ -1,6 +1,6 @@
 all:
-	pdflatex main.tex
-	pdflatex main.tex
+	pdflatex -output-directory=build/ main.tex
+	pdflatex -output-directory=build/ main.tex
 
 clean:
-	rm -v main.log main.aux main.pdf main.toc
+	rm -f build/*

@@ -10,6 +10,7 @@
 \usepackage{commons}
 \usepackage[svgnames]{xcolor}
 \usepackage[tikz]{bclogo}
+\usepackage{url}
 
 \input{commands}
 
@@ -20,6 +21,9 @@
 \NewDocumentCommand{\sectionbreak}{}{%
     \clearpage%
 }
+
+%add bibliograph yto table of content
+\addcontentsline{toc}{section}{Bibliography}
 
 \begin{document}
     \maketitle
@@ -38,4 +42,8 @@
     \input{src/texs/crostini-con-pate-olive}
     \input{src/texs/riso-pollo-mandorle}
     \input{src/texs/limoncello}
+
+	\clearpage
+	\bibliographystyle{plain}
+	\bibliography{src/bibs/biblio}
 \end{document}
