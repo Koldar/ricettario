@@ -12,3 +12,4 @@ build/
 *.toc
 *.bbl
 *.blg
+*.out
