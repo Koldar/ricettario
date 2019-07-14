@@ -10,3 +10,5 @@ build/
 *.log
 *.synctex
 *.toc
+*.bbl
+*.blg
