@@ -4,10 +4,11 @@ OUTPUT_FOLDER:=build
 MAIN:=main
 
 all:
-	$(LATEX) -output-directory=$(OUTPUTFOLDER) $(MAIN).tex
-	$(BIBTEX) build/$(MAIN).aux
-	$(LATEX) -output-directory=$(OUTPUTFOLDER) $(MAIN).tex
-	$(LATEX) -output-directory=$(OUTPUTFOLDER) $(MAIN).tex
+	mkdir -pv $(OUTPUT_FOLDER)
+	$(LATEX) -output-directory=$(OUTPUT_FOLDER) $(MAIN).tex
+	$(BIBTEX) $(OUTPUT_FOLDER)/$(MAIN).aux
+	$(LATEX) -output-directory=$(OUTPUT_FOLDER) $(MAIN).tex
+	$(LATEX) -output-directory=$(OUTPUT_FOLDER) $(MAIN).tex
 
 clean:
-	rm -f build/*
+	rm -f $(OUTPUT_FOLDER)/*
